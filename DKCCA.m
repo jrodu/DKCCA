@@ -1,4 +1,4 @@
-function [ dcell, ca, reg, dirsa, kernelMats, corcells ] = MDCCG(A, B, fit_per, window_length, np, numcomps, reggrid, gsd)
+function [ dcell, ca, reg, dirsa, kernelMats, corcells ] = DKCCA(A, B, fit_per, window_length, np, numcomps, reggrid, gsd)
 
     % A:                 an array of size q_A x T x N where q_A is the number of units, T
     %           the number of time points, and N the number of trials
