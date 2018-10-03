@@ -38,7 +38,7 @@ datacell=cell(2, 1);
 
 
 %run DKCCA algorithm
-[dcell]=MDCCG(datacell{1,1}, datacell{2,1}, setnumperwindow, windowlength, numpermute, numcomponents, regwindow, gsdval);
+[dcell]=DKCCA(datacell{1,1}, datacell{2,1}, setnumperwindow, windowlength, numpermute, numcomponents, regwindow, gsdval);
 
 
 %image plots
