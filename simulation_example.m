@@ -4,7 +4,7 @@ sig=1; %toggle this parameter to set the noise level in the simulations
 %       this value correspnds to params.GaussnoiseState below
 
 %settings for DKCCA algorithm
-numpermute=500;  % this is too low, but is set here for speed.  
+numpermute=0;  % this is too low, but is set here for speed.  
 setnumperwindow=1;
 windowlength=21;
 numcomponents=1;
@@ -40,29 +40,35 @@ datacell=cell(2, 1);
 %run DKCCA algorithm
 [dcell]=DKCCA(datacell{1,1}, datacell{2,1}, setnumperwindow, windowlength, numpermute, numcomponents, regwindow, gsdval);
 
-
+%%
 %image plots
-
-subplot(1,2,1)
-imagesc(dcell.original)
-caxis([0 1])
-axis square
-titleuse=sprintf("pre-inference \\sigma_{noise}=%d", sig);
-title(titleuse, 'Interpreter', 'tex')
-xlabel('time (ms), region Y')
-ylabel('time (ms), region X')
-
-
-subplot(1,2,2)
-imagesc(dcell.compsumGrayscale)
-caxis([0 1])
-axis square
-titleuse=sprintf("post-inference \\sigma_{noise}=%d", sig);
-title(titleuse, 'Interpreter', 'tex')
-xlabel('time (ms), region Y')
-ylabel('time (ms), region X')
+if numpermute>0
+    subplot(1,2,1)
+    imagesc(dcell.original)
+    caxis([0 1])
+    axis square
+    titleuse=sprintf("pre-inference \\sigma_{noise}=%d", sig);
+    title(titleuse, 'Interpreter', 'tex')
+    xlabel('time (ms), region Y')
+    ylabel('time (ms), region X')
 
 
-
+    subplot(1,2,2)
+    imagesc(dcell.compsumGrayscale)
+    caxis([0 1])
+    axis square
+    titleuse=sprintf("post-inference \\sigma_{noise}=%d", sig);
+    title(titleuse, 'Interpreter', 'tex')
+    xlabel('time (ms), region Y')
+    ylabel('time (ms), region X')
+else
+    imagesc(dcell.original)
+    caxis([0 1])
+    axis square
+    titleuse=sprintf("pre-inference \\sigma_{noise}=%d", sig);
+    title(titleuse, 'Interpreter', 'tex')
+    xlabel('time (ms), region Y')
+    ylabel('time (ms), region X')
+end
 
 
