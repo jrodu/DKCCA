@@ -4,7 +4,7 @@ sig=1; %toggle this parameter to set the noise level in the simulations
 %       this value correspnds to params.GaussnoiseState below
 
 %settings for DKCCA algorithm
-numpermute=0;  % this is too low, but is set here for speed.  
+numpermute=500;  % this is too low, but is set here for speed.  
 setnumperwindow=1;
 windowlength=21;
 numcomponents=1;
